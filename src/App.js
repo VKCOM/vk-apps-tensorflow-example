@@ -139,7 +139,7 @@ class App extends React.Component {
         return (
             <View activePanel="mainPanel">
                 <Panel id="mainPanel">
-                    <PanelHeader>Toxic detector</PanelHeader>
+                    <PanelHeader>The Toxic Detector</PanelHeader>
                     <Group>
                         <FormLayout>
                             <Input type="text" top="Your text"  value={this.state.text} onChange={this.changeText}/>
