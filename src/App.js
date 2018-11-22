@@ -1,6 +1,6 @@
 import React from 'react';
 import * as tf from '@tensorflow/tfjs';
-import {Cell, Div, FormLayout, Group, InfoRow, Input, List, Panel, PanelHeader, Spinner, View} from '@vkontakte/vkui';
+import {CellButton, Cell, Div, FormLayout, Group, InfoRow, Input, List, Panel, PanelHeader, Spinner, View} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import * as vc from './vocab.json';
@@ -26,6 +26,7 @@ class App extends React.Component {
 
         this.loadModel = this.loadModel.bind(this);
         this.changeText = this.changeText.bind(this);
+        this.clearText = this.clearText.bind(this);
         this.calculate = this.calculate.bind(this);
 
 
@@ -64,9 +65,14 @@ class App extends React.Component {
     }
 
     changeText(e) {
-        let text = e.target.value;
+        let text = e.target.value.toLowerCase();
         this.setState({text: text});
         this.calculate(text);
+    }
+
+    clearText() {
+        this.setState({text: ''});
+        this.calculate('');
     }
 
     async loadModel() {
@@ -136,7 +142,8 @@ class App extends React.Component {
                     <PanelHeader>Toxic detector</PanelHeader>
                     <Group>
                         <FormLayout>
-                            <Input type="text" top="Your text" onChange={this.changeText}/>
+                            <Input type="text" top="Your text"  value={this.state.text} onChange={this.changeText}/>
+                            <CellButton level="danger" onClick={this.clearText}>Clear text</CellButton>
                         </FormLayout>
                     </Group>
 
