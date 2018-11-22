@@ -12,6 +12,8 @@ More info (and a keras model): https://github.com/deepvk/shark
 * In VK: https://vk.com/app6759433
 * On GitHub Pages: https://VKCOM.github.io/vk-apps-tensorflow-example/
 
+![](screencast.gif)
+
 ## How to start
 
 `yarn start` || `npm start` — this will start dev server with hot reload on `localhost:10888`.
