@@ -6,5 +6,5 @@
 
 ## See
 
-In VK: https://vk.com/app6759433
-On GitHub Pages: https://VKCOM.github.io/vk-apps-tensorflow-example/
+* In VK: https://vk.com/app6759433
+* On GitHub Pages: https://VKCOM.github.io/vk-apps-tensorflow-example/
