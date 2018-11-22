@@ -89,7 +89,7 @@ class App extends React.Component {
 
     static renderEmoji(score) {
         if (score >= 0.9) {
-            return '🤬';
+            return '👿';
         } else if (score >= 0.5) {
             return '😡';
         } else if (score >= 0.2) {
