@@ -5,8 +5,6 @@ import '@vkontakte/vkui/dist/vkui.css';
 
 import * as vc from './vocab.json';
 
-const ROUND = 1000;
-
 class App extends React.Component {
     constructor() {
         super();
@@ -68,15 +66,15 @@ class App extends React.Component {
     }
 
     async loadModel() {
-        let loadedModel = await tf.loadModel('/model.json');
+        let loadedModel = await tf.loadModel(process.env.PUBLIC_URL + '/model.json');
         this.setState({model: loadedModel});
     }
 
-    renderScore(score) {
+    static renderScore(score) {
         return (Math.round(score * 1000) / 10)  + '%';
     }
 
-    renderEmoji(score) {
+    static renderEmoji(score) {
         if (score >= 0.9) {
             return '🤬';
         } else if (score >= 0.5) {
@@ -103,32 +101,32 @@ class App extends React.Component {
                         <List>
                             <Cell>
                                 <InfoRow title="Toxic">
-                                    {this.renderScore(this.state.data[0])} {this.renderEmoji(this.state.data[0])}
+                                    {App.renderScore(this.state.data[0])} {App.renderEmoji(this.state.data[0])}
                                 </InfoRow>
                             </Cell>
                             <Cell>
                                 <InfoRow title="Severe Toxic">
-                                    {this.renderScore(this.state.data[1])} {this.renderEmoji(this.state.data[1])}
+                                    {App.renderScore(this.state.data[1])} {App.renderEmoji(this.state.data[1])}
                                 </InfoRow>
                             </Cell>
                             <Cell>
                                 <InfoRow title="Obscene">
-                                    {this.renderScore(this.state.data[2])} {this.renderEmoji(this.state.data[2])}
+                                    {App.renderScore(this.state.data[2])} {App.renderEmoji(this.state.data[2])}
                                 </InfoRow>
                             </Cell>
                             <Cell>
                                 <InfoRow title="Threat">
-                                    {this.renderScore(this.state.data[3])} {this.renderEmoji(this.state.data[3])}
+                                    {App.renderScore(this.state.data[3])} {App.renderEmoji(this.state.data[3])}
                                 </InfoRow>
                             </Cell>
                             <Cell>
                                 <InfoRow title="Insult">
-                                    {this.renderScore(this.state.data[4])} {this.renderEmoji(this.state.data[4])}
+                                    {App.renderScore(this.state.data[4])} {App.renderEmoji(this.state.data[4])}
                                 </InfoRow>
                             </Cell>
                             <Cell>
                                 <InfoRow title="Identity Hate">
-                                    {this.renderScore(this.state.data[5])} {this.renderEmoji(this.state.data[5])}
+                                    {App.renderScore(this.state.data[5])} {App.renderEmoji(this.state.data[5])}
                                 </InfoRow>
                             </Cell>
                         </List>
