@@ -3,7 +3,7 @@ import * as tf from '@tensorflow/tfjs';
 import {CellButton, Cell, Div, FormLayout, Group, InfoRow, Input, List, Panel, PanelHeader, Spinner, View} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
-import * as vc from './vocab.json';
+import vc from './vocab.json';
 
 class App extends React.Component {
     constructor() {
@@ -45,7 +45,7 @@ class App extends React.Component {
         ];
 
         if (text && this.state.model) {
-            let tensorBuffer = tf.zeros([1, 100]).buffer();
+            let tensorBuffer = tf.buffer([1, 100]);
 
             let parts = text.split(' ');
             let tIndex = 0;
@@ -76,7 +76,7 @@ class App extends React.Component {
     }
 
     async loadModel() {
-        let loadedModel = await tf.loadModel(process.env.PUBLIC_URL + '/model.json');
+        let loadedModel = await tf.loadLayersModel(process.env.PUBLIC_URL + '/model.json');
         this.setState({model: loadedModel});
         if (this.state.text) {
             this.calculate(this.state.text);
